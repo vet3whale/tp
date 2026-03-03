@@ -48,9 +48,6 @@ public class Duke {
                 break;
             case "delete":
             case "deleteworkout":
-//                // TODO: Pass 'arguments' to your DeleteWorkoutParser
-//                System.out.println("Successfully deleted a Workout Session!");
-//                break;
             case "deleteexercise":
                 // TODO: Pass 'arguments' to your DeleteExerciseParser
                 Delete.execute(arguments);
