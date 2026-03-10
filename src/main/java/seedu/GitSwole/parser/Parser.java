@@ -56,6 +56,8 @@ public class Parser {
 				throw new GitSwoleException(GitSwoleException.ErrorType.INCOMPLETE_COMMAND, command);
 			}
 			return new DeleteCommand(response);
+		case LIST:
+			return new ListCommand(response);
 		case HELP:
 			return new HelpCommand();
 		case EXIT:
