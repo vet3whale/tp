@@ -82,7 +82,7 @@ class HelpCommandTest {
     @DisplayName("Output contains add workout format")
     void output_containsAddWorkoutFormat() throws GitSwoleException {
         new HelpCommand().execute(workouts, ui);
-        assertTrue(outContent.toString().contains("add /w WORKOUT"));
+        assertTrue(outContent.toString().contains("add w/WORKOUT"));
     }
 
     @Test
@@ -90,10 +90,10 @@ class HelpCommandTest {
     void output_containsAddExerciseFormat() throws GitSwoleException {
         new HelpCommand().execute(workouts, ui);
         String output = outContent.toString();
-        assertTrue(output.contains("/e EXERCISE_NAME"));
-        assertTrue(output.contains("/wt WEIGHT"));
-        assertTrue(output.contains("/s SETS"));
-        assertTrue(output.contains("/r REPS"));
+        assertTrue(output.contains("e/EXERCISE_NAME"));
+        assertTrue(output.contains("wt/WEIGHT"));
+        assertTrue(output.contains("s/SETS"));
+        assertTrue(output.contains("r/REPS"));
     }
 
     @Test
@@ -146,14 +146,14 @@ class HelpCommandTest {
     @DisplayName("Output contains add workout example")
     void output_containsAddWorkoutExample() throws GitSwoleException {
         new HelpCommand().execute(workouts, ui);
-        assertTrue(outContent.toString().contains("add /w push"));
+        assertTrue(outContent.toString().contains("add w/push"));
     }
 
     @Test
     @DisplayName("Output contains add exercise example")
     void output_containsAddExerciseExample() throws GitSwoleException {
         new HelpCommand().execute(workouts, ui);
-        assertTrue(outContent.toString().contains("add /e benchpress /w push"));
+        assertTrue(outContent.toString().contains("add e/benchpress w/push"));
     }
 
     @Test
