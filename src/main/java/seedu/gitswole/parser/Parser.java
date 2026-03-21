@@ -9,6 +9,7 @@ import seedu.gitswole.command.HelpCommand;
 import seedu.gitswole.command.ExitCommand;
 import seedu.gitswole.command.FindCommand;
 import seedu.gitswole.command.ListCommand;
+import seedu.gitswole.command.LogCommand;
 import seedu.gitswole.command.MarkCommand;
 import seedu.gitswole.command.Command;
 
@@ -29,7 +30,7 @@ public class Parser {
     private static final Logger logger = Logger.getLogger(Parser.class.getName());
 
     enum CommandType {
-        ADD, DELETE, EXIT, HELP, LIST, FIND, MARK, EDIT
+        ADD, DELETE, EXIT, HELP, LIST, FIND, MARK, EDIT, LOG
     }
 
     private static final Map<String, CommandType> COMMAND_MAP = new HashMap<>();
@@ -44,6 +45,7 @@ public class Parser {
         COMMAND_MAP.put("mark", CommandType.MARK);
         COMMAND_MAP.put("unmark", CommandType.MARK);
         COMMAND_MAP.put("edit", CommandType.EDIT);
+        COMMAND_MAP.put("log", CommandType.LOG);
     }
 
     private Ui ui;
@@ -102,6 +104,12 @@ public class Parser {
                 throw new GitSwoleException(GitSwoleException.ErrorType.INCOMPLETE_COMMAND, command);
             }
             return new EditCommand(response);
+        case LOG:
+            if (words.length < 2) {
+                logger.log(Level.WARNING, "Log command missing workout name.");
+                throw new GitSwoleException(GitSwoleException.ErrorType.INCOMPLETE_COMMAND, command);
+            }
+            return new LogCommand(response);
         case LIST:
             return new ListCommand(response);
         case HELP:
